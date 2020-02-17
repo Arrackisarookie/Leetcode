@@ -22,7 +22,7 @@
 # Clarification:
 #     Confused why the returned value is an integer but your answer is an
 #     array?
-#     
+#
 #     Note that the input array is passed in by referce, which means
 #     modification to the input array will be known to the caller as well.
 #
@@ -31,3 +31,20 @@
 #         int len = removeDuplicates(nums);
 #
 #         // any modification to nums in your function oul
+
+
+class Solution(object):
+    # 快慢指针
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+
+        p, q = 0, 1
+        while q < len(nums):
+            if nums[p] != nums[q]:
+                nums[p + 1] = nums[q]
+                p += 1
+            q += 1
+        return p
